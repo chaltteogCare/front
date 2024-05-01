@@ -4,6 +4,7 @@ import React, { Suspense } from "react";
 
 const Loading = React.lazy(() => import('./pages/Loading'));
 const Login = React.lazy(() => import('./pages/Login'));
+const Main = React.lazy(() => import('./pages/Main'));
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Suspense fallback={<Loading />}>
             <Routes>
               <Route path="/" element={<Login />} />
+              <Route path="/Main" element={<Main />} />
             </Routes>
           </Suspense>
         </div>
