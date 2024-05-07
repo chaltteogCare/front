@@ -2,8 +2,18 @@ import React from 'react';
 import { motion } from "framer-motion";
 import { Mobile, PC } from "../styles/Global_d"; 
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
+
 
 const Signup = () => {
+
+    const navigate = useNavigate(); // useHistory 훅을 사용하여 history 인스턴스를 생성합니다.
+
+    // 2단계: 이미지 클릭 시 schedule 페이지로 이동하는 함수를 구현합니다.
+    const handleClick = () => {
+        navigate("/schedule"); // "/schedule" 경로로 이동합니다.
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -70,9 +80,11 @@ const Signup = () => {
                         />
                     </InputGroup>
 
-                    <div id='btn'>
+
+                    <div id='btn' onClick={handleClick}>
                         <img src="/images/Signup/m_btn.svg" alt="Signup Button"></img>
                     </div>
+
                 </ContainerM>
             </Mobile>
             <PC>
