@@ -7,11 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
-    const navigate = useNavigate(); // useHistory 훅을 사용하여 history 인스턴스를 생성합니다.
-
-    // 2단계: 이미지 클릭 시 schedule 페이지로 이동하는 함수를 구현합니다.
+    const navigate = useNavigate(); 
     const handleClick = () => {
-        navigate("/schedule"); // "/schedule" 경로로 이동합니다.
+        navigate("/schedule"); 
     };
 
     return (
@@ -30,7 +28,6 @@ const Signup = () => {
                         관리자 회원가입
                     </div>
                     
-                    {/* Input Group: 성함 */}
                     <InputGroup>
                         <label htmlFor="name">성함</label>
                         <input
@@ -40,7 +37,6 @@ const Signup = () => {
                         />
                     </InputGroup>
                
-                    {/* Input Group: 전화번호 */}
                     <InputGroup>
                         <label htmlFor="phonenumber">전화번호</label>
                         <input
@@ -50,7 +46,6 @@ const Signup = () => {
                         />
                     </InputGroup>
 
-                    {/* Input Group: 비밀번호 */}
                     <InputGroup>
                         <label htmlFor="passwd">비밀번호</label>
                         <input
@@ -60,7 +55,6 @@ const Signup = () => {
                         />
                     </InputGroup>
 
-                    {/* Input Group: 비밀번호 확인 */}
                     <InputGroup>
                         <label htmlFor="passwdCheck">비밀번호 확인</label>
                         <input
@@ -70,7 +64,6 @@ const Signup = () => {
                         />
                     </InputGroup>
 
-                    {/* Input Group: 관할 소속 */}
                     <InputGroup>
                         <label htmlFor="team">관할 소속</label>
                         <input

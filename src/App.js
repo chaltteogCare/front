@@ -8,6 +8,8 @@ const Main = React.lazy(() => import('./pages/Main'));
 const Signup = React.lazy(() => import('./pages/Signup'));
 const My = React.lazy(() => import('./pages/My'));
 const Schedule = React.lazy(() => import('./pages/Schedule'));
+const Sadd = React.lazy(() => import('./pages/Sadd'));
+
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
               <Route path="/Signup" element={<Signup />} />
               <Route path="/My" element={<My />} />
               <Route path="/Schedule" element={<Schedule />} /> 
+              <Route path="/Sadd" element={<Sadd />} />
             </Routes>
           </Suspense>
         </div>
