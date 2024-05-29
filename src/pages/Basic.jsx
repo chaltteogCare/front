@@ -1,3 +1,4 @@
+// 기본 코드
 import React from 'react';
 import { motion } from "framer-motion";
 import { Mobile, PC } from "../styles/Global_d"; 

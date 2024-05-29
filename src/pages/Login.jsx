@@ -1,9 +1,16 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mobile, PC } from "../styles/Global_d"; 
 import styled from "styled-components";
 
 const Login = () => {
+    const navigate = useNavigate();
+
+    const onClickMain = () => {
+      navigate("/Main");
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -31,7 +38,7 @@ const Login = () => {
                         <img src="/images/login/m_membership.svg" style={{ position: "relative", top: "90px", left: "170px" }}/>
                     </div>
                     <div>
-                        <img src="/images/login/m_btn.svg" style={{ position: "relative", top: "140px", left: "67px" }}/>
+                        <img src="/images/login/m_btn.svg" style={{ position: "relative", top: "140px", left: "67px" }} onClick={onClickMain}/>
                         <img src="/images/login/m_k_btn.svg" style={{ position: "relative", top: "155px", left: "67px" }}/>
                     </div>
                 </ContainerM>
