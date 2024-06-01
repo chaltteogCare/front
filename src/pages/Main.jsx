@@ -14,7 +14,7 @@ const Main = () => {
         navigate("/");
     };
     const onClickMypage = () => {
-        navigate("/Mypage");
+        navigate("/My");
     };
     const onClickSetting = () => {
         navigate("/Setting");

@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { Mobile, PC } from "../styles/Global_d"; 
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 
 const Sadd = () => {
+    const [name, setName] = useState('');
+    const [date, setDate] = useState('');
+    const [data, setData] = useState([]); 
 
-    const navigate = useNavigate(); // useHistory 훅을 사용하여 history 인스턴스를 생성합니다.
+    const navigate = useNavigate();    
 
-    // 2단계: 이미지 클릭 시 schedule 페이지로 이동하는 함수를 구현합니다.
     const handleClick = () => {
-        navigate("/schedule"); // "/schedule" 경로로 이동합니다.
+        if (name && date) {
+            setData([...data, { name, date }]); 
+            setName(''); 
+            setDate(''); 
+        }
+    };
+
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+    };
+
+    const handleDateChange = (e) => {
+        setDate(e.target.value);
     };
 
     return (
@@ -21,14 +35,36 @@ const Sadd = () => {
         >
             <Mobile>
                 <ContainerM>
-                    <div id='B_Btn' onClick={handleClick}>
-                        <img src="/images/Btn_back.svg" alt="Signup Button"></img>
+                    <div id='B_Btn' onClick={() => navigate("/schedule")}>
+                        <img src="/images/Btn_back.svg" alt="Back Button"></img>
                     </div>
 
-                    <div id="title">
-                        추가
+                    <InputGroup>
+                        <label htmlFor="name">성함</label>
+                        <input
+                            name="name"
+                            type="text"
+                            placeholder="성함을 입력해주세요."
+                            value={name}
+                            onChange={handleNameChange}
+                        />
+                    </InputGroup>
+
+                    <InputGroup>
+                        <label htmlFor="date">날짜</label>
+                        <input
+                            name="date"
+                            type="datetime-local"
+                            value={date}
+                            onChange={handleDateChange}
+                        />
+                    </InputGroup>
+
+                    <div id='btn' onClick={handleClick}>
+                        <img src="/images/Schedule/addBtn.svg" alt="Add Button"></img>
                     </div>
-                    
+
+    
                 </ContainerM>
             </Mobile>
             <PC>
@@ -46,23 +82,71 @@ const ContainerM = styled.div`
     display: flex;
     position: relative;
 
-    
-    #title {
-        color: #333;
-        font-size: 24px;
-        font-weight: bold;
-        margin-top: 20px;
-        margin-bottom: 40px; /* 타이틀과 입력 필드 사이의 간격을 조정 */
-        margin-bottom: 20px; /* 각 입력 필드 그룹 간 마진 설정 */
+    #B_Btn {
+        margin-bottom: 20px; 
     }
 
-    
+    #btn {
+        display: flex;
+        margin: 20px;
+        justify-content: center; 
+    }
 `;
 
+const InputGroup = styled.div`
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px; 
+
+    input {
+        padding: 10px;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        font-size: 16px;
+        display: block; 
+        margin-top: 10px; 
+    }
+    ::placeholder {
+        color: gray;
+        font-size: 13px;
+    }
+
+    label {
+        color: #333;
+        font-size: 14px;
+        font-weight: bold;
+        align-self: flex-start; 
+    }
+`;
 
 const ContainerP = styled.div`
     min-height: 100vh;
     background-color: #FFF7F0;
+`;
+
+const DataContainer = styled.div`
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const DataBox = styled.div`
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    p {
+        margin: 0;
+        font-size: 16px;
+    }
 `;
 
 export default Sadd;
