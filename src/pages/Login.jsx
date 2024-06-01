@@ -51,8 +51,11 @@ const Login = () => {
 };
 
 const ContainerM = styled.div`
-    min-height: 100vh;
+    height: 100vh; /* 컨테이너 높이를 뷰포트 높이에 맞추기 */
+    width: 100%;
+    max-width: 390px;
     background-color: #FFF7F0;
+    overflow-x: hidden; /* 가로 및 세로 스크롤을 막기 위한 추가 */
 
     input {
     width: 250px;

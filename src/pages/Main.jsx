@@ -85,7 +85,7 @@ const Main = () => {
                             />
                             <p id="name" style={{ position: "relative", top: "-180px", left: "45px", textAlign:"left"}}> 고길동 </p>
                             <p id="address" style={{ position: "relative", top: "-195px", left: "48px", textAlign:"left"}}> 주소 : </p>
-                            <p id="address" style={{ position: "relative", top: "-225px", left: "82px", textAlign:"left"}}> 경기도 구리시 xx동 </p>
+                            <p id="address" style={{ position: "relative", top: "-225px", left: "82px", textAlign:"left"}}> 경기도 구리시 XX동 </p>
                             {/* 박스 설정 바로가기 */}
                             <img
                                 src="/images/main/sett.svg"
