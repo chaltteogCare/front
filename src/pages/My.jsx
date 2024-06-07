@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { Mobile, PC } from "../styles/Global_d"; 
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 
 const My = () => {
     const [showModal, setShowModal] = useState(false);
@@ -15,6 +16,11 @@ const My = () => {
         setShowModal(!showModal);
     };
 
+    const navigate = useNavigate();    
+    const handleClick = () => {
+          navigate("/Main"); 
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -23,14 +29,14 @@ const My = () => {
         >
             <Mobile>
                 <ContainerM>
-                    <div id='Slogo'>
-                        <img src="/images/Slogo.svg" alt="Signup Button"></img>
+                    <div id='B_Btn' onClick={handleClick}>
+                        <img src="/images/Btn_back.svg" alt="Signup Button"></img>
                     </div>
                     {/* 사용자의 이름을 보여주는 부분 */}
                     <div id='title'>
                         {name}
                     </div>
-                    {/* 사용자의 소속을 보여주는 부분을 추가합니다. */}
+                    {/* 사용자의 소속을 보여주는 부분 */}
                     <div id='affiliation'>
                         {affiliation}
                     </div>
@@ -57,9 +63,7 @@ const My = () => {
                         </div>
                     )}
 
-                    <div id='btn_L'>
-                        <img src="/images/My/Btn_logout.svg" alt="Signup Button"></img>
-                    </div>
+    
                     
                 </ContainerM>
             </Mobile>
@@ -77,45 +81,45 @@ const ContainerM = styled.div`
     min-height: 100vh;
     display: flex;
     position: relative;
-    align-items: center; /* 이 부분을 추가해주세요 */
+    align-items: center; 
 
-    #Slogo {
-        align-self: flex-start; /* Flex 컨테이너 내에서 왼쪽 정렬 */
-        width: 100%; /* 너비를 100%로 설정하여 div의 전체 너비를 차지하게 함 */
-        text-align: left; /* 이미지를 왼쪽으로 정렬 */
+    #B_Btn {
+        align-self: flex-start; 
+        width: 100%; 
+        text-align: left; 
     }
     
     #title {
-        color: brown; /* 홍길동 글자색을 갈색으로 변경 */
+        color: brown; 
         font-size: 40px;
         font-weight: bold;
         margin-top: 40px;
-        margin-bottom: 20px; /* 타이틀과 입력 필드 사이의 간격을 조정 */
+        margin-bottom: 20px; 
     }
 
     #affiliation {
-        color: grey; /* 서울시 소속의 글자색을 회색으로 변경 */
-        font-size: 13px; /* 크기를 10px로 변경 */
+        color: grey; 
+        font-size: 13px;
         margin-top: 10px;
-        margin-bottom: 20px; /* 타이틀과 입력 필드 사이의 간격을 조정 */
+        margin-bottom: 20px; 
     }
 
     #btn_M, #btn_L {
         margin-top: 20px;
         display: flex;
-        justify-content: center; /* 버튼 중앙 정렬 */
+        justify-content: center; 
     }
 
     input {
         margin-top: 20px;
         padding: 10px;
         width: 300px;
-        border: 1px solid brown; /* 갈색 테두리 */
-        background-color: transparent; /* 내부 색 투명 */
+        border: 1px solid brown;
+        background-color: transparent; 
         border-radius: 15px;
         font-size: 16px;
-        display: block; /* 블록 레벨 요소로 만듦으로써 width 100% 가능 */
-        margin-bottom: 10px; /* 입력 필드 사이의 간격을 조정 */
+        display: block; 
+        margin-bottom: 10px; 
     }
 `;
 

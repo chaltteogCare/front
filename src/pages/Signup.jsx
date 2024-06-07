@@ -9,7 +9,7 @@ const Signup = () => {
 
     const navigate = useNavigate(); 
     const handleClick = () => {
-        navigate("/schedule"); 
+        navigate("/"); 
     };
 
     return (
@@ -100,22 +100,22 @@ const ContainerM = styled.div`
         font-size: 24px;
         font-weight: bold;
         margin-top: 20px;
-        margin-bottom: 40px; /* 타이틀과 입력 필드 사이의 간격을 조정 */
+        margin-bottom: 40px; 
     }
 
     #btn {
         margin-top: 20px;
         display: flex;
-        justify-content: center; /* 버튼 중앙 정렬 */
+        justify-content: center; 
     }
 `;
 
 const InputGroup = styled.div`
-    margin-bottom: 20px; /* 각 입력 필드 그룹 간 마진 설정 */
+    margin-bottom: 20px; 
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* label이 input의 바로 위쪽 왼쪽에 위치하도록 설정 */
-    margin-left: 25px; /* 왼쪽 화면 기준으로 오른쪽으로 30px 움직이도록 조정 */
+    align-items: flex-start; 
+    margin-left: 25px; 
 
     input {
         padding: 10px;
@@ -123,8 +123,8 @@ const InputGroup = styled.div`
         border: 1px solid #ccc;
         border-radius: 15px;
         font-size: 16px;
-        display: block; /* 블록 레벨 요소로 만듦으로써 width 100% 가능 */
-        margin-top: 10px; /* label 바로 아래 위치 */
+        display: block; 
+        margin-top: 10px; 
     }
     ::placeholder {
         color: gray;
@@ -135,7 +135,7 @@ const InputGroup = styled.div`
         color: #333;
         font-size: 14px;
         font-weight: bold;
-        align-self: flex-start; /* label이 배치될 위치를 왼쪽으로 정렬 */
+        align-self: flex-start; 
     }
 `;
 
