@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Mobile, PC } from "../styles/Global_d"; 
@@ -23,11 +23,16 @@ const Main = () => {
       navigate("/Add");
     };
 
+    // 모달창 부분
+    const [modalOpen, setModalOpen] = useState(false);
+    const modalBackground = useRef();
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            style={{ position: 'relative', zIndex: modalOpen ? 100 : 0 }}
         >
             <GlobalStyle />
             <Mobile>
@@ -46,21 +51,47 @@ const Main = () => {
                     />
                     {/* 로그아웃 바로가기 */}
                     <img
-                        id="logout_btn"
+                        className={'modal-open-btn'} 
                         src="/images/main/logout.svg"
                         style={{ position: "relative", left: "140px" }}
-                        onClick={onClickLogout}
+                        onClick={() => setModalOpen(true)}
                     />
+                    {
+                        modalOpen &&
+                        <div className={'modal-container'} ref={modalBackground} onClick={e => {
+                            if (e.target === modalBackground.current) {
+                                setModalOpen(false);
+                            }
+                            }}>
+                            <div className={'modal-content'}>
+                                <img
+                                    src="/images/main/logout_img.svg"
+                                    style={{ position: "relative", width: "180px", left: "30px", top: "35px"}}
+                                />
+                                <img
+                                    src="/images/main/cancel_btn.svg"
+                                    style={{ position: "relative", left: "-2px", top: "100px", width: "120px"}}
+                                    className={'modal-close-btn'} onClick={() => setModalOpen(false)}
+                                />
+                                {/* 이 부분 클릭 시 token 값 없애주는 거 잊으면 안된다잉 */}
+                                <img
+                                    src="/images/main/logout_btn.svg"
+                                    style={{ position: "relative", left: "10px", top: "100px", width: "120px"}}
+                                    className={'modal-close-btn'} onClick={onClickLogout}
+                                />
+                            </div>
+                        </div>
+                    }
                     {/* 마이페이지 바로가기 */}
                     <img
                         id="profile_btn"
                         src="/images/main/profile.svg"
-                        style={{ position: "relative", top: "9px", left: "165px", width: "33px" }}
+                        style={{ position: "relative", top: "9px", left: "165px", width: "33px", zIndex: "10" }}
                         onClick={onClickMypage}
                     />
 
                     {/* 관리자 정보 기재 */}
-                    <div id="manager_information">
+                    <div id="manager_information" style={{ zIndex: modalOpen ? 0 : 10 }}>
                         <p id="name" style={{ position: "relative", top: "15px", left: "35px", textAlign:"left" }}>
                             관리자 :  
                         </p>
@@ -77,7 +108,7 @@ const Main = () => {
                     </div>
 
                     {/* 담당 노인분들을 확인할 수 있는 박스들 */}
-                    <div id="boxes" style={{ marginTop: "200px"}}>
+                    <div id="boxes" style={{ marginTop: "200px", zIndex: modalOpen ? 0 : 10 }}>
                         <div id="box" style={{ marginTop: "-300px"}}>
                             <img
                                 src="/images/main/box.svg"
@@ -100,7 +131,7 @@ const Main = () => {
                     </div>
 
                     {/* 담당하는 노인분 추가 */}
-                    <div id="addbox" style={{marginTop: "-320px"}}>
+                    <div id="addbox" style={{marginTop: "-320px", zIndex: modalOpen ? 0 : 10}}>
                         <img
                             src="/images/main/addBox.svg"
                             style={{ position: "relative", marginTop: "20px", left: "25px", height: "170px"}}
@@ -145,8 +176,42 @@ const ContainerM = styled.div`
     #address {
         font-size: 13px;
     }
-`;
 
+    /* 모달 css */
+    .btn-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+        z-index: 0;
+    }
+    
+    .modal-open-button, .modal-close-btn {
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    .modal-container {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+    }
+
+    .modal-content {
+        background-color: #FFF7F0;
+        width: 250px;
+        height: 360px;
+        padding: 15px;
+        border-radius: 10px;
+        z-index: 1001; 
+    }
+`;
 
 const ContainerP = styled.div`
     min-height: 100vh;

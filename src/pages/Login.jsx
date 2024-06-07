@@ -11,6 +11,10 @@ const Login = () => {
       navigate("/Main");
     };
 
+    const onClickSignup = () => {
+        navigate("/Signup");
+      };
+
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -35,7 +39,7 @@ const Login = () => {
                         />
                     </div>
                     <div>
-                        <img src="/images/login/m_membership.svg" style={{ position: "relative", top: "90px", left: "170px" }}/>
+                        <img src="/images/login/m_membership.svg" style={{ position: "relative", top: "90px", left: "170px" }} onClick={onClickSignup}/>
                     </div>
                     <div>
                         <img src="/images/login/m_btn.svg" style={{ position: "relative", top: "140px", left: "67px" }} onClick={onClickMain}/>

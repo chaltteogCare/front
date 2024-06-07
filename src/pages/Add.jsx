@@ -1,10 +1,27 @@
-import React from 'react';
-import { motion } from "framer-motion";
+import React, { useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Mobile, PC } from "../styles/Global_d"; 
 import styled, { createGlobalStyle } from "styled-components";
 
 const Add = () => {
+    const navigate = useNavigate();
+    
+    const onClickMain = () => {
+        navigate("/Main");
+    };
+
+    // 박스 선택 시 빨간 줄 테두리가 생기도록 기능함
+    const [isBoxRed, setIsBoxRed] = useState(false);
+
+    const toggleBoxImage = () => {
+        setIsBoxRed(prevState => !prevState);
+    };
+
+    // 모달창 부분
+    const [modalOpen, setModalOpen] = useState(false);
+    const modalBackground = useRef();
+
     return (
         <>
             <GlobalStyle />
@@ -15,20 +32,27 @@ const Add = () => {
             >
                 <Mobile>
                     <ContainerM>
+                        {/* 백 버튼 */}
+                        <img
+                            id="back"
+                            src="/images/main/back.svg"
+                            style={{ position: "relative", top: "10px", left: "10px" }}
+                            onClick={onClickMain}
+                        />
                         <img
                             id="logo"
                             src="/images/main/logo_s.svg"
-                            style={{ position: "relative", top: "10px", left: "19px" }}
+                            style={{ position: "relative", top: "10px", left: "285px" }}
                         />
                         <img
                             src="/images/add/title.svg"
-                            style={{ position: "relative", top: "60px", left: "-23px" }}
+                            style={{ position: "relative", top: "60px", left: "-59px" }}
                         />
         
                         {/* 성함 */}
                         <img
                             src="/images/add/name.svg"
-                            style={{ position: "relative", top: "112px", left: "-159px" }}
+                            style={{ position: "relative", top: "112px", left: "-195px" }}
                         />
                         <input 
                             style={{ position: "relative", top: "120px", left: "20px" }}
@@ -50,31 +74,60 @@ const Add = () => {
                         />         
 
                         {/* 찾아보기 버튼 */}
-                        <div style={{ textAlign: "center", position: "relative", height: "200px" }}>
+                        <div style={{ textAlign: "center", position: "relative", height: "35px",  marginTop: "180px" }}>
                             <img
                                 src="/images/add/s_btn.svg"
-                                style={{ top: "180px", position: "relative" }}
+                                style={{ position: "relative" }}
                             />
                         </div>
 
-                        {/* 찾는 노인분 정보가 있을 경우, 나타나는 박스 */}
-                        <div id="box" style={{ marginTop: "60px"}}>
-                            <img
-                                src="/images/add/box.svg"
-                                style={{ position: "relative", left: "22px", height: "110px" }}
-                            />
-                            <p id="findName" style={{ position: "relative", top: "-122px", left: "45px", textAlign:"left"}}> 고길동 </p>
-                            <p id="phone" style={{ position: "relative", top: "-135px", left: "48px", textAlign:"left"}}> 010-0000-0000 </p>
-                            <p id="address" style={{ position: "relative", top: "-145px", left: "48px", textAlign:"left"}}> 주소 : </p>
-                            <p id="address" style={{ position: "relative", top: "-180.5px", left: "88px", textAlign:"left"}}> 경기도 구리시 XX동 </p>
-                        </div>
+                        {/* 찾아보기 버튼을 눌렀을 경우, 정보가 있다면 뿅하고 나타나는 영역 */}
+                        <div id="found">
+                            {/* 찾는 노인분 정보가 있을 경우, 나타나는 박스 */}
+                            <div id="box" style={{ marginTop: "50px", height: "108px"}} onClick={toggleBoxImage}>
+                                <img
+                                    src={isBoxRed ? "/images/add/box_red.svg" : "/images/add/box.svg"}
+                                    style={{ position: "relative", left: "22px", height: "110px" }}
+                                />
+                                <p id="findName" style={{ position: "relative", top: "-122px", left: "45px", textAlign:"left"}}> 고길동 </p>
+                                <p id="phone" style={{ position: "relative", top: "-135px", left: "48px", textAlign:"left"}}> 010-0000-0000 </p>
+                                <p id="address" style={{ position: "relative", top: "-145px", left: "48px", textAlign:"left"}}> 주소 : </p>
+                                <p id="address" style={{ position: "relative", top: "-180.5px", left: "88px", textAlign:"left"}}> 경기도 구리시 XX동 </p>
+                            </div>
 
-                        {/* 연결 버튼 */}
-                        <div style={{ textAlign: "center", position: "relative", height: "200px" }}>
-                            <img
-                                src="/images/add/btn.svg"
-                                style={{ top: "-140px", position: "relative" }}
-                            />
+                            {/* 연결 버튼 */}
+                            <div className={'btn-wrapper'} style={{ textAlign: "center", position: "relative", marginTop: "240px"}}>
+                                <img
+                                    src="/images/add/btn.svg"
+                                    style={{ top: "-210px", position: "relative" }}
+                                    className={'modal-open-btn'} 
+                                    onClick={() => setModalOpen(true)}
+                                />
+                            </div>
+                            {
+                                modalOpen &&
+                                <div className={'modal-container'} ref={modalBackground} onClick={e => {
+                                if (e.target === modalBackground.current) {
+                                    setModalOpen(false);
+                                }
+                                }}>
+                                <div className={'modal-content'}>
+                                    <img
+                                        src="/images/add/picture.svg"
+                                        style={{ position: "relative", width: "150px", left: "43px", top: "50px"}}
+                                    />
+                                    <img
+                                        src="/images/add/write.svg"
+                                        style={{ position: "relative", left: "35px", top: "60px"}}
+                                    />
+                                    <img
+                                        src="/images/add/modal_btn.svg"
+                                        style={{ position: "relative", left: "55px", top: "120px"}}
+                                        className={'modal-close-btn'} onClick={() => setModalOpen(false)}
+                                />
+                                </div>
+                                </div>
+                            }
                         </div>
                     </ContainerM>
                 </Mobile>
@@ -122,11 +175,43 @@ const ContainerM = styled.div`
         font-family: "Gothic A1";
         font-size: 16px;
         font-weight: 400;  
-        z-index: 1; /* 다른 요소들보다 위에 위치하도록 설정 */
     }
 
     input::placeholder {
         color: rgba(0, 0, 0, 0.3);
+    }
+
+    /* 모달 css */
+    .btn-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+        z-index: 0;
+    }
+
+    .modal-open-button, .modal-close-btn {
+        cursor: pointer;
+        margin-left: auto;
+    }
+
+    .modal-container {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background-color: #FFF7F0;
+        width: 250px;
+        height: 360px;
+        padding: 15px;
+        border-radius: 10px;
     }
 `;
 
