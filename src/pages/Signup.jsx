@@ -20,12 +20,12 @@ const Signup = () => {
         >
             <Mobile>
                 <ContainerM>
-                    <div id="logo">
-                        <img src='images/Slogo.svg' alt='Logo'></img>
+                    <div id='B_Btn' onClick={() => navigate("/")}>
+                        <img src="/images/Btn_back.svg" alt="Back Button"></img>
                     </div>
 
                     <div id="title">
-                        관리자 회원가입
+                        회원가입
                     </div>
                     
                     <InputGroup>
@@ -101,6 +101,7 @@ const ContainerM = styled.div`
         font-weight: bold;
         margin-top: 20px;
         margin-bottom: 40px; 
+        margin-left: 20px;
     }
 
     #btn {
@@ -116,6 +117,14 @@ const InputGroup = styled.div`
     flex-direction: column;
     align-items: flex-start; 
     margin-left: 25px; 
+
+    #title {
+        color: #333;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 40px; 
+    }
 
     input {
         padding: 10px;

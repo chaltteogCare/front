@@ -90,7 +90,7 @@ const ContainerM = styled.div`
     }
     
     #title {
-        color: brown; 
+        color: #B45404; 
         font-size: 40px;
         font-weight: bold;
         margin-top: 40px;
@@ -114,7 +114,7 @@ const ContainerM = styled.div`
         margin-top: 20px;
         padding: 10px;
         width: 300px;
-        border: 1px solid brown;
+        border: 1px solid #B45404;
         background-color: transparent; 
         border-radius: 15px;
         font-size: 16px;

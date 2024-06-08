@@ -57,8 +57,14 @@ const ContainerM = styled.div`
     padding: 8px;
     min-height: 100vh;
     display: flex;
+
     position: relative;
-    align-items: center; 
+
+    #btn_A {
+        margin-left: 5px;
+
+    }
+     
    
 
 
@@ -66,6 +72,7 @@ const ContainerM = styled.div`
         align-self: flex-start; 
         width: 100%; 
         text-align: left; 
+        align-items: center; 
     }
 
     #title {
@@ -73,6 +80,7 @@ const ContainerM = styled.div`
         font-size: 24px;
         font-weight: bold;
         margin-top: 20px;
+        margin-left: 10px;
         margin-bottom: 40px; 
         margin-bottom: 20px; 
     }
@@ -80,6 +88,7 @@ const ContainerM = styled.div`
     #name {
         
         font-size: 30px;
+        align-items: center; 
         font-weight: bold;
     }
 

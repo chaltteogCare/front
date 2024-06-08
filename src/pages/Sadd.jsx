@@ -106,6 +106,8 @@ const InputGroup = styled.div`
         border: 1px solid #ccc;
         border-radius: 15px;
         font-size: 16px;
+        color: #000;
+        background-color: transparent; /* Make the background transparent */
         display: block; 
         margin-top: 10px; 
     }
