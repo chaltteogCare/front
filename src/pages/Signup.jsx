@@ -132,7 +132,8 @@ const InputGroup = styled.div`
         border: 1px solid #ccc;
         border-radius: 15px;
         font-size: 16px;
-        display: block; 
+        display: block;
+        background-color: transparent;
         margin-top: 10px; 
     }
     ::placeholder {
