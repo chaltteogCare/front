@@ -78,6 +78,11 @@ const Signup = () => {
                         <img src="/images/Signup/m_btn.svg" alt="Signup Button"></img>
                     </div>
 
+                    <img
+                        id="logo"
+                        src="/images/Slogo.svg"
+                    />
+
                 </ContainerM>
             </Mobile>
             <PC>
@@ -108,6 +113,12 @@ const ContainerM = styled.div`
         margin-top: 20px;
         display: flex;
         justify-content: center; 
+    }
+
+    #logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
 `;
 

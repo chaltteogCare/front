@@ -63,6 +63,11 @@ const My = () => {
                         </div>
                     )}
 
+                    <img
+                        id="logo"
+                        src="/images/Slogo.svg"
+                    />
+
     
                     
                 </ContainerM>
@@ -87,6 +92,12 @@ const ContainerM = styled.div`
         align-self: flex-start; 
         width: 100%; 
         text-align: left; 
+    }
+
+    #logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
     
     #title {

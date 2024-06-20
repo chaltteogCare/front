@@ -64,6 +64,11 @@ const Sadd = () => {
                         <img src="/images/Schedule/addBtn.svg" alt="Add Button"></img>
                     </div>
 
+                    <img
+                        id="logo"
+                        src="/images/Slogo.svg"
+                    />
+
     
                 </ContainerM>
             </Mobile>
@@ -90,6 +95,12 @@ const ContainerM = styled.div`
         display: flex;
         margin: 20px;
         justify-content: center; 
+    }
+    
+    #logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
 `;
 

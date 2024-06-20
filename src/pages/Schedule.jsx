@@ -31,19 +31,29 @@ const Schedule = ({ data }) => {
                         오늘의 일정
                     </div>
 
-                    <div id="box" style={{ marginTop: "10px"}}>
-                            <img
-                                src="/images/Schedule/box.svg"
-                                style={{ width: "100%", height: "auto" }}
-                            />
-                            <p id="Date" style={{ position: "absolute", top: "130px", left: "45px", textAlign:"left", margin: 0 }}> 오후 09:57 </p>
-                            <p id="name" style={{ position: "absolute", top: "135px", left: "190px", textAlign:"left", margin: 0 }}> 김소연 </p>
+                    <div id="box" style={{ marginTop: "10px", position: 'relative' }}>
+                        <img
+                            src="/images/Schedule/box.svg"
+                            style={{ width: "100%", height: "auto" }}
+                        />
+                        <p id="Date" style={{ position: "absolute", top: "10px", left: "30px", textAlign:"left", margin: 0 }}> 오후 09:57 </p>
+                        <p id="name" style={{ position: "absolute", top: "15px", left: "170px", textAlign:"left", margin: 0 }}> 김소연 </p>
+                        <img
+                            id="D_btn"
+                            src="/images/Schedule/bbtn.svg"
+                            alt="D_btn"
+                            style={{ position: "absolute", top: '5px', right: '15px', width: '1cm', height: '1cm' }}
+                        />
                     </div>
-
 
                     <div id='btn_A' onClick={handleClick} >
                         <img src="/images/Schedule/add_Btn.svg" alt="Add Button"></img>
                     </div>
+
+                    <img
+                        id="logo"
+                        src="/images/Slogo.svg"
+                    />
 
                 </ContainerM>
             </Mobile>
@@ -57,17 +67,18 @@ const ContainerM = styled.div`
     padding: 8px;
     min-height: 100vh;
     display: flex;
-
     position: relative;
 
     #btn_A {
         margin-left: 5px;
+    }
 
+    #logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
      
-   
-
-
     #B_Btn {
         align-self: flex-start; 
         width: 100%; 
@@ -86,16 +97,11 @@ const ContainerM = styled.div`
     }
     
     #name {
-        
         font-size: 30px;
         align-items: center; 
         font-weight: bold;
     }
-
-
-    
 `;
-
 
 const ContainerP = styled.div`
     min-height: 100vh;
