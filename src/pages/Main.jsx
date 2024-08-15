@@ -101,10 +101,10 @@ const Main = () => {
                         </p>
                         <p id="content" style={{  position: "relative", top: "-60px", left: "35px" }}>소속 : </p>
                         {/* 관리자 소속 */}
-                        <p id="content" style={{  position: "relative", top: "-92px", left: "69px", textAlign:"left" }}>서울시청울랄라랄 </p>
+                        <p id="content" style={{  position: "relative", top: "-92px", left: "69px", textAlign:"left" }}>서울시청 </p>
                         <p id="content" style={{  position: "relative", top: "-100px", left: "35px" }}>관할구역 : </p>
                         {/* 관리자 담당 구역 */}
-                        <p id="content" style={{  position: "relative", top: "-132px", left: "95px", textAlign:"left" }}>나도몰라 </p>
+                        <p id="content" style={{  position: "relative", top: "-132px", left: "95px", textAlign:"left" }}>중랑구 </p>
                     </div>
 
                     {/* 담당 노인분들을 확인할 수 있는 박스들 */}
@@ -131,7 +131,7 @@ const Main = () => {
                     </div>
 
                     {/* 담당하는 노인분 추가 */}
-                    <div id="addbox" style={{marginTop: "-320px", zIndex: modalOpen ? 0 : 10}}>
+                    <div id="addbox" style={{marginTop: "-300px", zIndex: modalOpen ? 0 : 10}}>
                         <img
                             src="/images/main/addBox.svg"
                             style={{ position: "relative", marginTop: "20px", left: "25px", height: "170px"}}

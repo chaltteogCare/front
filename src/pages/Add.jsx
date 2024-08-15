@@ -45,14 +45,14 @@ const Add = () => {
                             style={{ position: "relative", top: "10px", left: "285px" }}
                         />
                         <img
-                            src="/images/add/title.svg"
+                            src="/images/add/lo.svg"
                             style={{ position: "relative", top: "60px", left: "-59px" }}
                         />
         
                         {/* 성함 */}
                         <img
                             src="/images/add/name.svg"
-                            style={{ position: "relative", top: "112px", left: "-195px" }}
+                            style={{ position: "relative", top: "112px", left: "-215px" }}
                         />
                         <input 
                             style={{ position: "relative", top: "120px", left: "20px" }}

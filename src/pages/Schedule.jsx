@@ -62,12 +62,11 @@ const Schedule = ({ data }) => {
 };
 
 const ContainerM = styled.div`
+    height: 100vh; /* 컨테이너 높이를 뷰포트 높이에 맞추기 */
+    width: 100%;
+    max-width: 390px;
     background-color: #FFF7F0;
-    flex-direction: column;
-    padding: 8px;
-    min-height: 100vh;
-    display: flex;
-    position: relative;
+    overflow-x: hidden; /* 가로 및 세로 스크롤을 막기 위한 추가 */
 
     #btn_A {
         margin-left: 5px;
