@@ -6,10 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 const My = () => {
     const [showModal, setShowModal] = useState(false);
-    // 서버에서 가져온 이름을 저장할 상태, 현재는 "홍길동"으로 초기화
     const [name, setName] = useState("홍길동");
     const [phoneNumber, setPhoneNumber] = useState("");
-    // 소속 상태를 "서울시"로 초기화
     const [affiliation, setAffiliation] = useState("서울시소속");
 
     const toggleModal = () => {
@@ -18,7 +16,7 @@ const My = () => {
 
     const navigate = useNavigate();    
     const handleClick = () => {
-          navigate("/Main"); 
+        navigate("/Main"); 
     };
 
     return (
@@ -30,18 +28,16 @@ const My = () => {
             <Mobile>
                 <ContainerM>
                     <div id='B_Btn' onClick={handleClick}>
-                        <img src="/images/Btn_back.svg" alt="Signup Button"></img>
+                        <img src="/images/Btn_back.svg" alt="Back Button"></img>
                     </div>
-                    {/* 사용자의 이름을 보여주는 부분 */}
                     <div id='title'>
                         {name}
                     </div>
-                    {/* 사용자의 소속을 보여주는 부분 */}
                     <div id='affiliation'>
                         {affiliation}
                     </div>
                     <div id='btn_M' onClick={toggleModal}>
-                      <img src="/images/My/Btn_mo.svg" alt="Signup Button"></img>
+                        <img src="/images/My/Btn_mo.svg" alt="Modify Button"></img>
                     </div>
                     {showModal && (
                         <div>
@@ -62,14 +58,10 @@ const My = () => {
                             />
                         </div>
                     )}
-
                     <img
                         id="logo"
                         src="/images/Slogo.svg"
                     />
-
-    
-                    
                 </ContainerM>
             </Mobile>
             <PC>
@@ -104,23 +96,27 @@ const ContainerM = styled.div`
         font-weight: bold;
         margin-top: 40px;
         margin-bottom: 20px; 
+        text-align: center; /* 가운데 정렬 */
     }
 
     #affiliation {
         color: grey; 
         font-size: 13px;
         margin-top: 10px;
-        margin-bottom: 20px; 
+        margin-bottom: 20px;
+        text-align: center; /* 가운데 정렬 */
     }
 
-    #btn_M, #btn_L {
+    #btn_M {
         margin-top: 20px;
+        margin-bottom: 20px;
+
         display: flex;
         justify-content: center; 
     }
 
     input {
-        margin-top: 20px;
+        
         padding: 10px;
         width: 300px;
         border: 1px solid #B45404;
@@ -128,7 +124,7 @@ const ContainerM = styled.div`
         border-radius: 15px;
         font-size: 16px;
         display: block; 
-        margin-bottom: 10px; 
+        margin: 0 auto 10px; /* 수평 가운데 정렬 */
     }
 `;
 

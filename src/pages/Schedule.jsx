@@ -46,9 +46,12 @@ const Schedule = ({ data }) => {
                         />
                     </div>
 
-                    <div id='btn_A' onClick={handleClick} >
-                        <img src="/images/Schedule/add_Btn.svg" alt="Add Button"></img>
-                    </div>
+                    {/* 버튼을 하단 가운데에 위치시키기 위한 컨테이너 */}
+                    <BtnContainer>
+                        <div id='btn_A' onClick={handleClick}>
+                            <img src="/images/Schedule/add_Btn.svg" alt="Add Button"></img>
+                        </div>
+                    </BtnContainer>
 
                     <img
                         id="logo"
@@ -61,6 +64,14 @@ const Schedule = ({ data }) => {
     );
 };
 
+// 버튼을 하단 중앙에 위치시키기 위한 새로운 styled-component
+const BtnContainer = styled.div`
+    position: absolute; /* 절대 위치 */
+    bottom: 20px; /* 하단에서 20px 떨어진 위치 */
+    left: 50%; /* 왼쪽 50% */
+    transform: translateX(-50%); /* 중앙 정렬을 위한 변환 */
+`;
+
 const ContainerM = styled.div`
     height: 100vh; /* 컨테이너 높이를 뷰포트 높이에 맞추기 */
     width: 100%;
@@ -68,16 +79,6 @@ const ContainerM = styled.div`
     background-color: #FFF7F0;
     overflow-x: hidden; /* 가로 및 세로 스크롤을 막기 위한 추가 */
 
-    #btn_A {
-        margin-left: 5px;
-    }
-
-    #logo {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-     
     #B_Btn {
         align-self: flex-start; 
         width: 100%; 
@@ -91,7 +92,6 @@ const ContainerM = styled.div`
         font-weight: bold;
         margin-top: 20px;
         margin-left: 10px;
-        margin-bottom: 40px; 
         margin-bottom: 20px; 
     }
     
@@ -100,11 +100,15 @@ const ContainerM = styled.div`
         align-items: center; 
         font-weight: bold;
     }
-`;
 
-const ContainerP = styled.div`
-    min-height: 100vh;
-    background-color: #FFF7F0;
+    #logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
 `;
 
 export default Schedule;
+
+
+
