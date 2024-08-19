@@ -96,15 +96,15 @@ const Main = () => {
                             관리자 :  
                         </p>
                         {/* 관리자 이름 */}
-                        <p id="name" style={{ position: "relative", top: "-45px", left: "125px", textAlign:"left" }}>
+                        <p id="name" style={{ position: "relative", top: "-42px", left: "125px", textAlign:"left" }}>
                             김서진 
                         </p>
                         <p id="content" style={{  position: "relative", top: "-60px", left: "35px" }}>소속 : </p>
                         {/* 관리자 소속 */}
-                        <p id="content" style={{  position: "relative", top: "-92px", left: "69px", textAlign:"left" }}>서울시청 </p>
+                        <p id="content" style={{  position: "relative", top: "-89px", left: "69px", textAlign:"left" }}>서울시청 </p>
                         <p id="content" style={{  position: "relative", top: "-100px", left: "35px" }}>관할구역 : </p>
                         {/* 관리자 담당 구역 */}
-                        <p id="content" style={{  position: "relative", top: "-132px", left: "95px", textAlign:"left" }}>중랑구 </p>
+                        <p id="content" style={{  position: "relative", top: "-129px", left: "95px", textAlign:"left" }}>중랑구 </p>
                     </div>
 
                     {/* 담당 노인분들을 확인할 수 있는 박스들 */}
@@ -124,9 +124,9 @@ const Main = () => {
                                 onClick={onClickSetting}
                             />
                             <p id="content" style={{  position: "relative", top: "-248px", left: "47px" }}>전기 및 수도 : </p>
-                            <p id="content" style={{  position: "relative", top: "-280px", left: "128px", textAlign:"left", color: "blue" }}>양호 </p>
+                            <p id="content" style={{  position: "relative", top: "-277px", left: "128px", textAlign:"left", color: "blue" }}>양호 </p>
                             <p id="content" style={{  position: "relative", top: "-290px", left: "47px" }}>전화 통화량 : </p>
-                            <p id="content" style={{  position: "relative", top: "-322px", left: "128px", textAlign:"left", color: "red" }}>부족</p>
+                            <p id="content" style={{  position: "relative", top: "-319px", left: "128px", textAlign:"left", color: "red" }}>부족</p>
                         </div>
                     </div>
 
