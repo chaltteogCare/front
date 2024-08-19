@@ -35,9 +35,15 @@ const Sadd = () => {
         >
             <Mobile>
                 <ContainerM>
-                    <div id='B_Btn' onClick={() => navigate("/schedule")}>
-                        <img src="/images/Btn_back.svg" alt="Back Button"></img>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px' }}>
+                    <div id='B_Btn' onClick={() => navigate("/")}>
+                        <img src="/images/Btn_back.svg" alt="Back Button" />
                     </div>
+
+                    <img
+                        id="logo"
+                        src="/images/main/logo_s.svg"
+                    /> </div>
 
                     <InputGroup>
                         <label htmlFor="name">성함</label>
@@ -60,14 +66,9 @@ const Sadd = () => {
                         />
                     </InputGroup>
 
-                    <div id='btn' onClick={handleClick}>
+                    <div id='Add_btn' onClick={handleClick}>
                         <img src="/images/Schedule/addBtn.svg" alt="Add Button"></img>
                     </div>
-
-                    <img
-                        id="logo"
-                        src="/images/Slogo.svg"
-                    />
 
     
                 </ContainerM>
@@ -80,28 +81,18 @@ const Sadd = () => {
 };
 
 const ContainerM = styled.div`
+    height: 100vh; /* 컨테이너 높이를 뷰포트 높이에 맞추기 */
+    width: 100%;
+    max-width: 390px;
     background-color: #FFF7F0;
-    flex-direction: column;
-    padding: 8px;
-    min-height: 100vh;
-    display: flex;
-    position: relative;
+    overflow-x: hidden; /* 가로 및 세로 스크롤을 막기 위한 추가 */
 
-    #B_Btn {
-        margin-bottom: 20px; 
-    }
-
-    #btn {
+    #Add_btn {
         display: flex;
         margin: 20px;
         justify-content: center; 
     }
     
-    #logo {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
 `;
 
 const InputGroup = styled.div`
@@ -109,7 +100,7 @@ const InputGroup = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 20px; 
+    margin-left: 30px; 
 
     input {
         padding: 10px;
@@ -138,28 +129,6 @@ const InputGroup = styled.div`
 const ContainerP = styled.div`
     min-height: 100vh;
     background-color: #FFF7F0;
-`;
-
-const DataContainer = styled.div`
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const DataBox = styled.div`
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 10px;
-    width: 300px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    p {
-        margin: 0;
-        font-size: 16px;
-    }
 `;
 
 export default Sadd;

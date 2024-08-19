@@ -20,9 +20,16 @@ const Signup = () => {
         >
             <Mobile>
                 <ContainerM>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px' }}>
                     <div id='B_Btn' onClick={() => navigate("/")}>
-                        <img src="/images/Btn_back.svg" alt="Back Button"></img>
+                        <img src="/images/Btn_back.svg" alt="Back Button" />
                     </div>
+
+                    <img
+                        id="logo"
+                        src="/images/main/logo_s.svg"
+                        
+                    /> </div>
 
                     <div id="title">
                         회원가입
@@ -74,14 +81,10 @@ const Signup = () => {
                     </InputGroup>
 
 
-                    <div id='btn' onClick={handleClick}>
+                    <div id='login_btn' onClick={handleClick}>
                         <img src="/images/Signup/m_btn.svg" alt="Signup Button"></img>
                     </div>
 
-                    <img
-                        id="logo"
-                        src="/images/Slogo.svg"
-                    />
 
                 </ContainerM>
             </Mobile>
@@ -108,17 +111,13 @@ const ContainerM = styled.div`
         margin-left: 20px;
     }
 
-    #btn {
+    #login_btn {
         margin-top: 20px;
         display: flex;
         justify-content: center; 
     }
 
-    #logo {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
+
 `;
 
 const InputGroup = styled.div`

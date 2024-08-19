@@ -27,9 +27,18 @@ const My = () => {
         >
             <Mobile>
                 <ContainerM>
-                    <div id='B_Btn' onClick={handleClick}>
-                        <img src="/images/Btn_back.svg" alt="Back Button"></img>
+
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px' }}>
+                    <div id='B_Btn' onClick={() => navigate("/")}>
+                        <img src="/images/Btn_back.svg" alt="Back Button" />
                     </div>
+
+                    <img
+                        id="logo"
+                        src="/images/main/logo_s.svg"
+                        
+                    /></div>
+ 
                     <div id='title'>
                         {name}
                     </div>
@@ -58,10 +67,7 @@ const My = () => {
                             />
                         </div>
                     )}
-                    <img
-                        id="logo"
-                        src="/images/Slogo.svg"
-                    />
+
                 </ContainerM>
             </Mobile>
             <PC>
@@ -77,19 +83,7 @@ const ContainerM = styled.div`
     max-width: 390px;
     background-color: #FFF7F0;
     overflow-x: hidden; /* 가로 및 세로 스크롤을 막기 위한 추가 */
-
-    #B_Btn {
-        align-self: flex-start; 
-        width: 100%; 
-        text-align: left; 
-    }
-
-    #logo {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-    
+   
     #title {
         color: #B45404; 
         font-size: 40px;
