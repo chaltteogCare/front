@@ -34,29 +34,6 @@ const Setting = () => {
         navigate("/Main");
     };
 
-    // 차트 데이터 부분
-    const data = {
-        labels: ['1일', '2일', '3일', '4일', '5일', '6일', '7일', '8일', '9일', '10일', '11일', '12일'],
-        datasets: [
-            {
-                label: '통화량',
-                data: [2, 5, 10, 8, 9, 3, 4, 2, 1, 2, 3, 4],
-                borderColor: 'rgb(255, 136, 26)',
-                backgroundColor: 'rgba(0, 0, 0, 0)',
-                fill: true,
-                tension: 0.4,
-            },
-            {
-                label: '전기 및 수도',
-                data: [50, 40, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100],
-                borderColor: 'rgb(102, 51, 0)',
-                backgroundColor: 'rgba(0, 0, 0, 0)',
-                fill: true,
-                tension: 0.4,
-            },
-        ],
-    };
-
     return (
         <>
             <GlobalStyle />
@@ -81,7 +58,7 @@ const Setting = () => {
                         />
         
                         {/* 성함 */}
-                        <div id="name">고길동</div>
+                        <div id="name" style={{marginTop: "100px"}}>고길동</div>
                         {/* 이미지 */}
                         <div id="img" style={{marginLeft: "195px", marginTop: "40px", height: "160px", width: "160px"}}>
                             <img src="/images/setting/pubao.jpg" style={{ height: "160px", width: "160px", borderRadius:  "15px", objectFit: "cover" }}/>
@@ -105,13 +82,8 @@ const Setting = () => {
                             <div id="significant">당뇨</div>
                         </div>                      
 
-                        {/* Line Chart 부분 */}
-                        <div style={{ margin: '20px' }}>
-                            <Line data={data} />
-                        </div>
-
                         {/* 삭제 버튼 */}
-                        <div id="delete_btn" style={{position: "relative", textAlign: "center", marginTop: "30px"}}>
+                        <div id="delete_btn" style={{position: "relative", textAlign: "center", marginTop: "100px"}}>
                         <img
                             src="/images/setting/delete_btn.svg"
                             style={{ position: "relative" }}
