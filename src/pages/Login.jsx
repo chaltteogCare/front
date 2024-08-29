@@ -18,40 +18,45 @@ const Login = () => {
   
     const handleLogin = async () => {
       if (!name || !password) {
-        alert("아이디와 비밀번호를 입력해주세요.");
-        return; // Stop further execution
+          alert("아이디와 비밀번호를 입력해주세요.");
+          return; // Stop further execution
       }
   
       try {
-        const response = await axios.post(
-          "/api/user/login",
-          {
-            password: password,
-            name: name,
+          const response = await axios.post(
+              "/api/user/login",
+              {
+                  password: password,
+                  name: name,
+              }
+          );
+  
+          // 데이터가 뭐 들어가 있는지 확인을 위한 console창
+          console.log(response.data.split("Bearer ")[1]);  // 전체 response.data 확인
+          console.log(password);  // 비밀번호 확인
+          console.log(name);    // id 확인
+  
+          //로그인 성공 시
+          if (response.status === 200) {
+              const token = response.data.split("Bearer ")[1]; // 토큰 받기
+              const userId = response.data.userId; // userId 받기
+  
+              // 'Bearer ' 문자열을 분리하고 token만 저장
+              if (token) {
+                  localStorage.setItem("token", token.split("Bearer ")[1]);
+              } else {
+                  console.error("토큰이 응답에 포함되어 있지 않습니다.");
+              }
+              
+              localStorage.setItem("userId", userId);
+  
+              // 토큰 값 출력
+              console.log("토큰 값: ", token, ", 아이디: ", userId);
+  
+              navigate("/Main"); // 로그인하면 홈 페이지로 이동
+          } else {
+              alert("로그인 실패함");
           }
-        );
-
-        // 데이터가 뭐 들어가 있는지 확인을 위한 console창
-        console.log(response.data.split("Bearer")[1]);  // 토큰값 확인
-        console.log(password);  // 비밀번호 확인
-        console.log(name);    // id 확인
-
-        //로그인 성공 시
-        if (response.status === 200) {
-          const token = response.data.token; // 토큰 받기
-          const userId = response.data.userId; // userId 받기
-
-          // 'Bearer ' 문자열을 분리하고 token만 저장
-          localStorage.setItem("token", token.split("Bearer ")[1]);
-          localStorage.setItem("userId", userId);
-
-          // 토큰 값 출력
-          console.log("토큰 값: ", token, ", 아이디: ", userId);
-
-          navigate("/Main"); // 로그인하면 홈 페이지로 이동
-        } else {
-            alert("로그인 실패함");
-        }
       } catch (error) {
           if (error.response && error.response.status === 403) {
               alert("아이디 또는 비밀번호가 잘못되었습니다.");
@@ -60,8 +65,7 @@ const Login = () => {
           }
           console.error("로그인 실패:", error);
       }
-    };
-    
+  };  
 
     return (
         <motion.div

@@ -10,8 +10,6 @@ const Setting = React.lazy(() => import('./pages/Setting'));
 const My = React.lazy(() => import('./pages/My'));
 const Schedule = React.lazy(() => import('./pages/Schedule'));
 const Sadd = React.lazy(() => import('./pages/Sadd'));
-const Add = React.lazy(() => import('./pages/Add'));
-
 
 function App() {
   return (
@@ -27,7 +25,6 @@ function App() {
               <Route path="/My" element={<My />} />
               <Route path="/Schedule" element={<Schedule />} /> 
               <Route path="/Sadd" element={<Sadd />} />
-              <Route path="/Add" element={<Add />} />
             </Routes>
           </Suspense>
         </div>
