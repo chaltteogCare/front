@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import axios from "axios";
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Mobile, PC } from "../styles/Global_d"; 
 import styled, { createGlobalStyle } from "styled-components";
 
@@ -26,6 +27,58 @@ const Main = () => {
     // 모달창 부분
     const [modalOpen, setModalOpen] = useState(false);
     const modalBackground = useRef();
+
+    // 백엔드 연동 axios.get
+    const [data, setData] = useState(null); // 단일 객체를 받기 위해 배열이 아닌 객체로 변경
+    const { userId } = useParams();
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //     try {
+    //         const token = localStorage.getItem("token");
+    //         const response = await axios.get(
+    //         `http://54.180.243.159:8080/api/data/${userId}`,
+    //         {
+    //             headers: {
+    //             Authorization: `Token ${token}`,
+    //             "Content-Type": "multipart/form-data",
+    //             },
+    //         }
+    //         );
+
+    //         console.log("Received data from API:", response.data);
+    //         console.log(token);
+    //         console.log(response.data.result);
+    //         setData(response.data.result); // 배열이 아닌 객체로 설정한 경우 변경
+    //     } catch (error) {
+    //         console.error("Error fetching data:", error);
+    //     }
+    //     };
+    //     fetchData();
+    // }, []);
+
+    useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          `http://54.180.243.159:8080/api/data/${userId}`,
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        console.log("Received data from API:", response.data);
+        console.log(token);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
     return (
         <motion.div

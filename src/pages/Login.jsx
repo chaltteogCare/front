@@ -15,7 +15,7 @@ const Login = () => {
     // 백엔드 연동 코드
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-
+  
     const handleLogin = async () => {
       if (!name || !password) {
         alert("아이디와 비밀번호를 입력해주세요.");
@@ -24,38 +24,44 @@ const Login = () => {
   
       try {
         const response = await axios.post(
-          "http://54.180.243.159:8080//api/user/login",
+          "/api/user/login",
           {
             password: password,
             name: name,
           }
         );
-  
-        const isSuccess = response.data.isSuccess;
-        if (isSuccess) {
-          const userId = response.data.result.userId; // 아이디 받기
-          localStorage.setItem("userId", userId); // 아이디 저장
-          const token = response.data.result.token; // 토큰 받기
-          localStorage.setItem("token", token); // 토큰 저장
-          navigate("/Main"); // 로그인 성공 시 홈 페이지로 이동
+
+        // 데이터가 뭐 들어가 있는지 확인을 위한 console창
+        console.log(response.data.split("Bearer")[1]);  // 토큰값 확인
+        console.log(password);  // 비밀번호 확인
+        console.log(name);    // id 확인
+
+        //로그인 성공 시
+        if (response.status === 200) {
+          const token = response.data.token; // 토큰 받기
+          const userId = response.data.userId; // userId 받기
+
+          // 'Bearer ' 문자열을 분리하고 token만 저장
+          localStorage.setItem("token", token.split("Bearer ")[1]);
+          localStorage.setItem("userId", userId);
+
+          // 토큰 값 출력
+          console.log("토큰 값: ", token, ", 아이디: ", userId);
+
+          navigate("/Main"); // 로그인하면 홈 페이지로 이동
         } else {
-          // Handle login failure
-          const errorCode = response.data.code;
-          const errorMessage = response.data.message;
-  
-          if (errorCode === 404) {
-            alert("존재하지 않은 아이디입니다.");
-          } else if (errorCode === 401) {
-            alert("잘못된 비밀번호입니다.");
-          } else {
-            alert(`로그인 실패: ${errorMessage}`);
-          }
+            alert("로그인 실패함");
         }
       } catch (error) {
-        alert("아이디와 비밀번호를 다시 확인해주세요.");
-        console.error("로그인 실패:", error);
+          if (error.response && error.response.status === 403) {
+              alert("아이디 또는 비밀번호가 잘못되었습니다.");
+          } else {
+              alert("로그인 도중 문제가 발생했습니다. 다시 시도해주세요.");
+          }
+          console.error("로그인 실패:", error);
       }
-  };
+    };
+    
 
     return (
         <motion.div
@@ -77,7 +83,7 @@ const Login = () => {
                         />
                         <input style={{ position: "relative", top: "70px", left: "60px" }}
                             value={password}
-                            type="password" // 비밀번호 입력란 수정
+                            type="password" 
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="비밀번호"
                         />
