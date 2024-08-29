@@ -32,13 +32,13 @@ const Login = () => {
           );
   
           // 데이터가 뭐 들어가 있는지 확인을 위한 console창
-          console.log(response.data.split("Bearer ")[1]);  // 전체 response.data 확인
+          console.log(response.data.token.split("Bearer ")[1]);  // 전체 response.data 확인
           console.log(password);  // 비밀번호 확인
           console.log(name);    // id 확인
   
           //로그인 성공 시
           if (response.status === 200) {
-              const token = response.data.split("Bearer ")[1]; // 토큰 받기
+              const token = response.data.token.split("Bearer ")[1]; // 토큰 받기
               const userId = response.data.userId; // userId 받기
   
               // 'Bearer ' 문자열을 분리하고 token만 저장

@@ -183,14 +183,14 @@ const Main = () => {
                         </div>
                     </div>
 
-                    {/* 담당하는 노인분 추가 */}
+                    {/* 담당하는 노인분 추가
                     <div id="addbox" style={{marginTop: "-300px", zIndex: modalOpen ? 0 : 10}}>
                         <img
                             src="/images/main/addBox.svg"
                             style={{ position: "relative", marginTop: "20px", left: "25px", height: "170px"}}
                             onClick={onClickAdd}
                         />
-                    </div>
+                    </div> */}
                 </ContainerM>
             </Mobile>
             <PC>
