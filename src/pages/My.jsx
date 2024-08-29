@@ -29,7 +29,7 @@ const My = () => {
                 <ContainerM>
 
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px' }}>
-                    <div id='B_Btn' onClick={() => navigate("/")}>
+                    <div id='B_Btn' onClick={() => navigate("/Main")}>
                         <img src="/images/Btn_back.svg" alt="Back Button" />
                     </div>
 

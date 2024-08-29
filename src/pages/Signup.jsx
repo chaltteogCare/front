@@ -1,16 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { Mobile, PC } from "../styles/Global_d"; 
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 
 const Signup = () => {
-
     const navigate = useNavigate(); 
-    const handleClick = () => {
-        navigate("/"); 
+
+    // 입력값 상태 관리
+    const [formData, setFormData] = useState({
+        name: '',
+        phonenumber: '',
+        passwd: '',
+        passwdCheck: '',
+        team: '',
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
     };
+
+    const handleClick = async () => {
+        // 비밀번호 확인 로직 추가
+        if (formData.passwd !== formData.passwdCheck) {
+            alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+            return; // 일치하지 않으면 함수 종료
+        }
+    
+        try {
+            const response = await axios.post("api/user/register", {
+                name: formData.name,
+                password: formData.passwd,
+                address: formData.team,
+                telephoneNumber: formData.phonenumber,
+            });
+            alert(response.data.message); // 성공 메시지 표시
+            // 성공 후 이동
+            navigate("/"); 
+        } catch (error) {
+            console.error("등록 실패:", error);
+            alert("등록에 실패했습니다. 다시 시도해주세요.");
+        }
+    };
+    
+    
 
     return (
         <motion.div
@@ -21,19 +59,13 @@ const Signup = () => {
             <Mobile>
                 <ContainerM>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px' }}>
-                    <div id='B_Btn' onClick={() => navigate("/")}>
-                        <img src="/images/Btn_back.svg" alt="Back Button" />
+                        <div id='B_Btn' onClick={() => navigate("/")}>
+                            <img src="/images/Btn_back.svg" alt="Back Button" />
+                        </div>
+                        <img id="logo" src="/images/main/logo_s.svg" />
                     </div>
 
-                    <img
-                        id="logo"
-                        src="/images/main/logo_s.svg"
-                        
-                    /> </div>
-
-                    <div id="title">
-                        회원가입
-                    </div>
+                    <div id="title">회원가입</div>
                     
                     <InputGroup>
                         <label htmlFor="name">성함</label>
@@ -41,6 +73,8 @@ const Signup = () => {
                             name="name"
                             type="text"
                             placeholder="성함을 입력해주세요."
+                            value={formData.name}
+                            onChange={handleChange}
                         />
                     </InputGroup>
                
@@ -50,6 +84,8 @@ const Signup = () => {
                             name="phonenumber"
                             type="text"
                             placeholder="010-XXXX-XXXX 형식으로 입력해주세요."
+                            value={formData.phonenumber}
+                            onChange={handleChange}
                         />
                     </InputGroup>
 
@@ -59,6 +95,8 @@ const Signup = () => {
                             name="passwd"
                             type="password"
                             placeholder="영문+숫자 8자 이상으로 설정해주세요."
+                            value={formData.passwd}
+                            onChange={handleChange}
                         />
                     </InputGroup>
 
@@ -68,6 +106,8 @@ const Signup = () => {
                             name="passwdCheck"
                             type="password"
                             placeholder="비밀번호를 한 번 더 입력해주세요."
+                            value={formData.passwdCheck}
+                            onChange={handleChange}
                         />
                     </InputGroup>
 
@@ -77,15 +117,14 @@ const Signup = () => {
                             name="team"
                             type="text"
                             placeholder="관할 소속을 입력해주요."
+                            value={formData.team}
+                            onChange={handleChange}
                         />
                     </InputGroup>
-
 
                     <div id='login_btn' onClick={handleClick}>
                         <img src="/images/Signup/m_btn.svg" alt="Signup Button"></img>
                     </div>
-
-
                 </ContainerM>
             </Mobile>
             <PC>
@@ -96,11 +135,11 @@ const Signup = () => {
 };
 
 const ContainerM = styled.div`
-    height: 100vh; /* 컨테이너 높이를 뷰포트 높이에 맞추기 */
+    height: 100vh;
     width: 100%;
     max-width: 390px;
     background-color: #FFF7F0;
-    overflow-x: hidden; /* 가로 및 세로 스크롤을 막기 위한 추가 */
+    overflow-x: hidden;
 
     #title {
         color: #333;
@@ -116,8 +155,6 @@ const ContainerM = styled.div`
         display: flex;
         justify-content: center; 
     }
-
-
 `;
 
 const InputGroup = styled.div`
@@ -126,14 +163,6 @@ const InputGroup = styled.div`
     flex-direction: column;
     align-items: flex-start; 
     margin-left: 25px; 
-
-    #title {
-        color: #333;
-        font-size: 24px;
-        font-weight: bold;
-        margin-top: 20px;
-        margin-bottom: 40px; 
-    }
 
     input {
         padding: 10px;
@@ -157,7 +186,6 @@ const InputGroup = styled.div`
         align-self: flex-start; 
     }
 `;
-
 
 const ContainerP = styled.div`
     min-height: 100vh;
